@@ -5,13 +5,28 @@ fetch("https://dad-jokes.p.rapidapi.com/random/joke", {
 		"x-rapidapi-host": "dad-jokes.p.rapidapi.com"
 	}
 })
-.then(response => {
+
+/*.then(response => {
 	console.log(response);
     var data = response.data;
           console.log('data', data);
 })
-.catch(err => {
-	console.error(err);
+*/
+
+.then(function(response) {
+    // request was successful
+    if (response.ok) {
+      console.log(response);
+      response.json().then(function(data) {
+        console.log(data);
+      });
+    } else {
+      alert("Error: " + response.statusText);
+    }
+    })
+
+.catch(function(error) {
+	alert("error");
 
 });
 
