@@ -1,0 +1,24 @@
+body {
+    align-items: center;
+    width: 100%;
+}
+
+h1 {
+  text-align: center;
+  font-size: x-large;
+  color: black;
+  padding: 20px;
+}
+
+p {
+    text-align: center;
+    font-size: medium;
+    color: darkorange;
+    font-weight: bold;
+    padding: 20px;
+}
+
+div {
+    display: flex;
+    align-items: center;
+}
