@@ -1,5 +1,7 @@
 var imgHappy = document.querySelector("#happyButton");
 var imgMeh = document.querySelector("#mehButton");
+var setup;
+var delivery;
 
 imgHappy.addEventListener("click", function () {
   var jokeHere = document.querySelector("#happyText");
@@ -12,11 +14,21 @@ imgHappy.addEventListener("click", function () {
       "x-rapidapi-host": "jokeapi-v2.p.rapidapi.com"
     }
   })
-    .then(response => {
+    .then(response => { 
+      // request was successful
+      if (response.ok) {
       return response.json();
+    }
+      else {
+      alert("Error: " + response.statusText);
+        }
     })
     .then(data => {
       console.log(data);
+      var setup = data.setup;
+      var delivery = data.delivery;
+    
+      jokeHere.append(setup, "...", delivery);
     })
     .catch(err => {
       console.error(err);
@@ -53,4 +65,3 @@ imgMeh.addEventListener("click", function () {
   console.log("meh :/");
   alert(" Meh image clicked :/ ");
 });
-
