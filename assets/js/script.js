@@ -1,13 +1,23 @@
 var imgHappy = document.querySelector("#happyButton");
 var imgMeh = document.querySelector("#mehButton");
-var setup;
-var delivery;
+var showlastJoke = document.querySelector("#lastJoke");
+var lastJoke = localStorage.getItem("last joke");
+
+if (lastJoke != null) {
+  showlastJoke.innerHTML = lastJoke;
+}; 
+//else {
+//  alert("Please click happy face to start a joke")
+//};
+
 
 imgHappy.addEventListener("click", function () {
   var jokeHere = document.querySelector("#happyText");
   jokeHere.innerHTML = "";
 
-  fetch("https://jokeapi-v2.p.rapidapi.com/joke/Any?type=twopart&format=json&contains=%252C&idRange=0-150&blacklistFlags=nsfw%2Cracist&safe-mode", {
+  //&blacklistFlags=nsfw%2Cracist
+
+  fetch("https://jokeapi-v2.p.rapidapi.com/joke/Any?type=twopart&format=json&contains=%252C&idRange=0-300&safe-mode", {
     "method": "GET",
     "headers": {
       "x-rapidapi-key": "d0416af555mshf2696a6e4f197f9p15a59djsna68a0f653c54",
@@ -27,8 +37,17 @@ imgHappy.addEventListener("click", function () {
       console.log(data);
       var setup = data.setup;
       var delivery = data.delivery;
+      var fullJoke = data.setup + "..." + data.delivery
     
-      jokeHere.append(setup, "...", delivery);
+    
+      jokeHere.append("New Joke: " + fullJoke);
+
+      var storeJoke = localStorage.getItem("last joke");
+      if (storeJoke != null) {
+        showlastJoke.innerHTML = "Last Joke: " + storeJoke;
+      }; 
+
+      localStorage.setItem("last joke", fullJoke);
     })
     .catch(err => {
       console.error(err);
