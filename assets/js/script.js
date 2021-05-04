@@ -81,6 +81,38 @@ imgHappy.addEventListener("click", function () {
 });
 
 imgMeh.addEventListener("click", function () {
-  console.log("meh :/");
-  alert(" Meh image clicked :/ ");
-});
+  var QuotePic = document.querySelector("#QuoteNow");
+  QuotePic.innerHTML = "";
+  
+  fetch("https://healthruwords.p.rapidapi.com/v1/quotes/?size=medium&maxR=1&t=Wisdom", {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-key": "de5cbe4ed9msh2b83413369c5e7fp1efe2djsn1a22cdab5bb4",
+		"x-rapidapi-host": "healthruwords.p.rapidapi.com"
+	}
+})
+.then(response => {
+  if (response.ok) {
+    return response.json();
+  }
+    else {
+    alert("Error: " + response.statusText);
+      }
+    })
+      .then(data => {
+        console.log(data);
+        console.log(data[0].media);
+        QuotePic.src = data[0].media;
+
+        var storeQuotePic = localStorage.getItem("last pic");
+        if (storeQuotePic != null) {
+          lastQuote.src = storeQuotePic;
+        }; 
+  
+        localStorage.setItem("last pic", data[0].media);
+      })
+      .catch(err => {
+        console.error(err);
+      });
+
+      })
