@@ -9,16 +9,32 @@
     <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
 <body>
+    <section class="section hero is-small is-success">
+        <div class="hero-body">
+          <p class="title">
+            Mood++
+          </p>
+          <p class="subtitle">
+            Enhancing the world's mood, one click at a time
+          </p>
+        </div>
+      </section>
+      <section class="section">
+    <div class="content is-centered is-medium">
     <h1 id = "title">How Are You Feeling Today?</h1>
     <p>Click on the image that most closely matches your current mood to get a mood++</p>
-    <main id = "emotionButtons" class="columns">
-        <div class="column">
-            <img id = "happyButton" src="assets/images/smiley-pixabay-edited.png" alt="Happy Face"/>
-            <div id="happyText"></div>
-            <div id="lastJoke"></div>
+    </div>
+    </section>
+    <main id = "emotionButtons" class="container">
+        <div class="columns is-desktop is-centered is-flex is-justify-content-space-around">
+        <div class="column level is-4 is-offset-1">
+            <img id = "happyButton" src="assets/images/smiley-pixabay-edited.png" alt="Happy Face" class="is-centered"/>
+            <div id="happyText" class="block box level-item has-text-centered"></div>
+            <div id="lastJoke" class="block box level-item has-text-centered"></div>
         </div>
-        <div id = "mehButton" class="column">
+        <div id = "mehButton" class="column is-4 is-offset-1">
             <img src="assets/images/meh-pixabay-edited.png" alt="Meh Face"/>
+        </div>
         </div>
     </main>
     <div id = "wittyComment">
