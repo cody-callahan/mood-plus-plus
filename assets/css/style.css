@@ -1,7 +1,3 @@
-/* body {
-    align-items: center;
-    width: 100%;
-} */
 
 body {
     background-color: lightcyan;
@@ -22,13 +18,7 @@ p {
     padding: 20px;
 }
 
-.is-horizontal-center {
-    justify-content: center;
-  }
- 
+.footer-p {
+      color:white;
 
-/* div {
-    display: flex;
-    align-items: center;
 }
-*/
